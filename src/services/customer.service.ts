@@ -1,6 +1,6 @@
 import { toSqlDatetime } from "./../utils/date.utils";
 import Dbfactory from "../dbmanager/db.factory";
-import Dbmanager from "../dbmanager/db.manager";
+import Dbmanager from "../dbmanager/sql.manager";
 import queries from "../utils/queries.utils";
 export class CustomerService {
 	private dbmanager: Dbmanager;

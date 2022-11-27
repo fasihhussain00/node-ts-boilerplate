@@ -1,6 +1,6 @@
 import { Auth, CredentialReset } from "../models/auth.model";
 import Dbfactory from "../dbmanager/db.factory";
-import Dbmanager from "../dbmanager/db.manager";
+import Dbmanager from "../dbmanager/sql.manager";
 import queries from "../utils/queries.utils";
 
 export class AuthService {
