@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<style>
+			.logo {
+				height: auto;
+				width: 10%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="emailBody" style="width: 600px">
+			<h4>Dear {{name}}</h4>
+			<p style="text-align: justify">
+				We have successfully processed your onboarding paperwork. You now have
+				access to Medical Health Covers LLC services.
+			</p>
+			<br />
+			<p>Below is your Credentials:</p>
+			<ul>
+				<li>URL: {{url}}</li>
+				<li>username : {{email}}</li>
+				<li>Password : {{password}}</li>
+			</ul>
+			<p style="text-align: justify">
+				Please review the End User License Agreement. We recommend printing this
+				out and having it available for all your staff members in the office
+			</p>
+			<h5>Getting started</h5>
+			<p style="text-align: justify">
+				For a smooth set up and transition into creating patients and requesting
+				Good Faith Evaluation (GFE), we recommend that you first establish the
+				treatments that your clinic provides and changing your password.
+			</p>
+			<p style="text-align: justify">
+				After you login with your above provided username (which is the email ID
+				you provided during the setup) and password, then click on
+				<b>“Category & Treatment”</b> menu item on the left navigator and
+				appropriately select the treatments that your clinic provides. Next
+				click on <b>“Change Password”</b> to change your password.
+			</p>
+			<p style="text-align: justify">
+				You are now ready to start requesting GFEs for your patients.
+			</p>
+			<p style="text-align: justify">
+				For any additional help please see help.
+			</p>
+			<div>
+				<p>Kind Regards</p>
+				<img
+					class="logo"
+					src="data:image/png;base64,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"
+				/>
+				<p><b>Medical Health Covers Team</b></p>
+			</div>
+		</div>
+	</body>
+</html>
