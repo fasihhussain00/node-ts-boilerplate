@@ -33,5 +33,5 @@ export const addCustomerSchema = Joi.object().keys({
 		.required(),
 });
 export default {
-	addCustomer,
+	addCustomerSchema,
 };

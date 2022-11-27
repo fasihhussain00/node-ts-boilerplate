@@ -1,18 +1,8 @@
 import { existsSync, mkdirSync, readFileSync } from "fs";
 import path from "path";
 
-const getDirectorySeperator = (): string => {
-	return __dirname.includes("\\") ? "\\" : "/";
-};
 export const getRootDirectory = (): string => {
-	let currentDirectory = __dirname;
-	let directorySeperator = getDirectorySeperator();
-	let splittedDirectories = currentDirectory.split(directorySeperator);
-	let currentPoppedDirectory;
-	do {
-		currentPoppedDirectory = splittedDirectories.pop();
-	} while (currentPoppedDirectory != "src");
-	return splittedDirectories.join(directorySeperator);
+	return require.main?.filename?.replace(/[\/|\\]src(.*)app(.*)/gm, "") || "";
 };
 
 export const createDirectoryIfNotExists = (directory: string) => {
