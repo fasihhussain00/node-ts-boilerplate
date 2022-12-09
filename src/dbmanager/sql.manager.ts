@@ -7,24 +7,28 @@ let pool: Pool = createPool(dbconfig);
 export class SqlDbManager implements IDbManager {
 	connection!: PoolConnection;
 	public async beginTran() {
-		await this.createConnectionIfNotCreated();
+		this.connection ??= await pool.getConnection();
 		await this.connection.beginTransaction();
 	}
 	public async commitTran() {
 		await this.connection.commit();
+		this.connection.release();
 	}
 	public async rollbackTran() {
 		await this.connection.rollback();
+		this.connection.release();
 	}
 	public releaseConnection() {
 		this.connection.release();
 	}
 	public async query(query: string, parameters: {}): Promise<any[]> {
-		await this.createConnectionIfNotCreated();
-		let [rows, fields] = await this.connection.query(query, parameters);
-		return rows as any[];
-	}
-	private async createConnectionIfNotCreated() {
-		if (!this.connection) this.connection = await pool.getConnection();
+		this.connection ??= await pool.getConnection();
+		try {
+			let [rows] = await this.connection.query(query, parameters);
+			return rows as any[];
+		} catch (error) {
+			await this.rollbackTran();
+			throw error;
+		}
 	}
 }
